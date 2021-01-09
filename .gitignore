@@ -1,0 +1,27 @@
+
+
+# 最初にすべての階層のファイルを無視する
+### all ignore ###
+/*
+/.**
+
+
+# 管理対象のファイルをホワイトリストで追記
+### not ignore ###
+
+!/.bin
+!/.zshrc
+!/.config
+!/.config/**
+
+!/.tmux.conf
+
+!/.bashrc
+
+/local/**
+
+
+!/README.md
+!/LICENSE
+!.gitignore
+!.gitkeeo
