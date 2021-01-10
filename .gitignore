@@ -10,6 +10,7 @@
 ### not ignore ###
 
 !/.bin
+!/.bin/**
 !/.zshrc
 !/.config
 !/.config/**
@@ -18,6 +19,7 @@
 
 !/.bashrc
 
+!/local
 /local/**
 
 
