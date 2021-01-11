@@ -8,7 +8,7 @@ function loadlib() {
         fi
 }
 
-loadlib ~/local/.zshalias
+loadlib ~/.dotlocal/.zshalias
 
 case ${OSTYPE} in
 	darwin*)

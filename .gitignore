@@ -19,8 +19,8 @@
 
 !/.bashrc
 
-!/local
-/local/**
+!/dotlocal
+/dotlocal/**
 
 
 !/README.md
