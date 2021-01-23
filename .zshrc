@@ -38,6 +38,7 @@ case ${OSTYPE} in
     alias -g cdl="a=('ls -l') ; ls -l | cat -n ; read b ; cd ${a[$b-l]}"
     alias -g countfile='(shopt -s dotglob; for dir in */; do all=("$dir"/*); echo "$dir: ${#all[@]}"; done)'
     alias -g view="cmd.exe /c start NeeView.exe"
+    alias -g tmuxend="tmux kill-server"
 esac
 
 #function
