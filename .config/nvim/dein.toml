@@ -116,6 +116,17 @@ repo = 'w0rp/ale'
 repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]

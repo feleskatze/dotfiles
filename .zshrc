@@ -40,6 +40,7 @@ case ${OSTYPE} in
     alias -g view="cmd.exe /c start NeeView.exe"
     alias -g tmuxend="tmux kill-server"
 esac
+    alias -g dev="cd /mnt/c/users/ttomo/dropbox/develop"
 
 #function
 
