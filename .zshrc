@@ -16,8 +16,8 @@ case ${OSTYPE} in
 		alias -g gls="gls --color"
 		alias -g la="ls -a -GF"
 		alias -g v="nvim"
-		alias -g vim="nvim"
-		alias -g vimvim="vim"
+    alias -g vim="nvim"
+    alias -g vimvim="vim"
 		alias -g python="python3"
 		alias -g pip="pip3"
 		alias -g rm='mv -i -t ~/Trash'
@@ -141,3 +141,7 @@ setopt ignore_eof
 setopt interactive_comments
 
 
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"

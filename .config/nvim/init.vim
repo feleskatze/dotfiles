@@ -29,6 +29,7 @@ set number
 set autoindent
 set tabstop=2
 set expandtab
+set shiftwidth=2
 set splitright
 set clipboard=unnamed
 
@@ -53,6 +54,8 @@ set wildignorecase
 set wildmode=list:longest
 set pumheight=10
 set wildmenu
+set completeopt=menuone,noinsert
+inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
 
 "表示
 set number
@@ -70,7 +73,8 @@ set noshowmode
 syntax on
 set t_Co=256
 set background=dark
-highlight Normal ctermbg=none
+"highlight Normal ctermbg=none
+set termguicolors
 
 "そのほか
 set mouse=a
