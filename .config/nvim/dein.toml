@@ -1,5 +1,4 @@
 
-
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
@@ -29,6 +28,12 @@ repo = 'jonathanfilip/vim-lucius'
 repo = 'jacoborus/tender.vim'
 #hook_add = '''
 #        colorscheme tender
+#        '''
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+#hook_add = '''
+#        colorscheme gruvbox
 #        '''
 
 
@@ -92,7 +97,26 @@ repo = 'tpope/vim-endwise'
 repo = 'vim-scripts/Changed'
 
 
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
 
+[[plugins]]
+repo = 'tpope/vim-repeat'
 
+[[plugins]]
+repo = 'tpope/vim-commentary'
 
+[[plugins]]
+repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
