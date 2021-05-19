@@ -65,7 +65,8 @@ hook_add = '''
         inoremap <expr><tab> pumvisible() ? "\<C-n>" :
                 \neosnippet#expandable_or_jumpable() ?
                 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-        inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+        inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+        
         '''
 
 [[plugins]]

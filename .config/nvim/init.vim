@@ -55,7 +55,6 @@ set wildmode=list:longest
 set pumheight=10
 set wildmenu
 set completeopt=menuone,noinsert
-inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
 
 "表示
 set number
