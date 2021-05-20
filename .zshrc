@@ -148,3 +148,68 @@ setopt interactive_comments
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
+
+
+
+##########################################
+#             zinit setting
+##########################################
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+zinit light zsh-users/zsh-autosuggestions
+
+zinit light zdharma/fast-syntax-highlighting
+
+zinit light zdharma/history-search-multi-word
+
+zinit light supercrabtree/k
+
+zinit light mollifier/anyframe
+
+zinit light zsh-users/zsh-completions
+
+zinit light b4b4r07/enhancd
+
+# zinit snippet OMZL::git.zsh
+# zinit snippet OMZP::git
+# zinit snippet OMZL::prompt_info_functions.zsh
+# zinit cdclear -q
+
+setopt promptsubst
+# zinit snippet OMZT::gnzh
+
+#zinit snippet OMZ::themes/robbyrussell.zsh-theme
+#zinit snippet OMZ::themes/amuse.zsh-theme
+#zinit snippet OMZ::themes/frontcube.zsh-theme
+#zinit snippet OMZ::themes/murilasso.zsh-theme
+#zinit snippet OMZ::themes/pmcgee.zsh-theme
+
+#zinit snippet OMZ::themes/refined.zsh-theme
+zinit light romkatv/powerlevel10k
+zinit snippet https://github.com/sainnhe/dotfiles/raw/master/.zsh-theme-gruvbox-material-dark
+
+##########################################
+#            zinit setting end
+##########################################

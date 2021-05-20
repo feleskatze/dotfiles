@@ -3,6 +3,10 @@
 repo = 'Shougo/dein.vim'
 
 
+#=================================
+# Theme
+#=================================
+
 [[plugins]]
 repo = 'tomasr/molokai'
 #hook_add = '''
@@ -37,6 +41,13 @@ hook_add = '''
         '''
 
 
+#=======================================
+
+[[plugins]]
+repo = 'reireias/vim-cheatsheet'
+hook_add = '''
+        let g:cheatsheet#cheat_file = '~/.config/nvim/.cheatsheet.md'
+'''
 
 
 [[plugins]]
@@ -87,6 +98,13 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'Shougo/denite.nvim'
 
 
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add ='''
+        map <C-n> :NERDTreeToggle<CR>
+'''
+
+
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
@@ -112,20 +130,15 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'w0rp/ale'
+hook_add = '''
+        let g:ale_lint_on_text_cahnged = 0
+        nmap <silent><C-p> <Plug>(ale_previous_wrap)
+        nmap <silent><C-n> <Plug>(ale_next_wrap)
+'''
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
-[[plugins]]
-
-[[plugins]]
-repo = 'tpope/vim-commentary'
-
-[[plugins]]
-repo = 'w0rp/ale'
-
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'

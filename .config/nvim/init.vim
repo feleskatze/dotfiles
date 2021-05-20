@@ -56,6 +56,7 @@ set pumheight=10
 set wildmenu
 set completeopt=menuone,noinsert
 
+
 "表示
 set number
 set cursorline
@@ -98,7 +99,7 @@ autocmd FileType * setlocal formatoptions-=ro
 
 "Keymap
 nmap - $
-nnoremap <ESC><ESC> :nohlsearch<CR>
+nnoremap <C-l> :nohl<CR>
 
 inoremap jj <ESC>
 inoremap <C-@> <ESC>

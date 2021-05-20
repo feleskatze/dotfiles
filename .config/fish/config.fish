@@ -22,6 +22,12 @@ function cd
 end
 
 
+function open
+  cmd.exe /c start {$wslpath -m (pwd)}
+end
+
+  
+
 
 setenv PYENV_ROOT "$HOME/.pyenv"
 setenv PATH "$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
