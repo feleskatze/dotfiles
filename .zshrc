@@ -186,11 +186,11 @@ zinit light zdharma/history-search-multi-word
 
 zinit light supercrabtree/k
 
-zinit light mollifier/anyframe
+#zinit light mollifier/anyframe
 
 zinit light zsh-users/zsh-completions
 
-zinit light b4b4r07/enhancd
+#zinit light b4b4r07/enhancd
 
 # zinit snippet OMZL::git.zsh
 # zinit snippet OMZP::git
@@ -213,3 +213,7 @@ zinit snippet https://github.com/sainnhe/dotfiles/raw/master/.zsh-theme-gruvbox-
 ##########################################
 #            zinit setting end
 ##########################################
+
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

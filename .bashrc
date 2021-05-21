@@ -124,3 +124,5 @@ fi
 
 
 tmux
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
