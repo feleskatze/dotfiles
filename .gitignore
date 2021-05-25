@@ -14,6 +14,10 @@
 !/.zshrc
 !/.config
 !/.config/**
+/.config/coc/**
+/.config/configstore/**
+/.config/omf/**
+
 
 !/.tmux.conf
 
@@ -26,4 +30,4 @@
 !/README.md
 !/LICENSE
 !.gitignore
-!.gitkeeo
+!.gitkeep

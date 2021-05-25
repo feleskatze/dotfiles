@@ -57,6 +57,22 @@ repo = 'tyru/eskk.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+        let g:lightline = {
+        \ 'enable' : {'tabline': 0},
+        \ 'colorscheme' : 'onedark',
+        \ 'active' : {
+        \       'left': [ ['mode', 'paste'], ['readonly', 'filename', 'modified'] ],
+        \       'right': [ ['cocstaus'], ['percent', 'lineinfo'], ['charcode','fileformat','fileencoding', 'filetype'] ],
+        \       },
+        \
+        \ 'component_function': {
+        \        'cocstatus': 'coc#status',
+        \        },
+        \}
+'''
+
+
 
 
 
@@ -71,12 +87,13 @@ hook_add = '''
         let g:deoplete#enable_camel_case = 0
         let g:deoplete#enable_ignore_case = 0
         let g:deoplete#enable_refresh_always = 0
-        let g:deoplete#file#enable_buffer_paht = 1
+        let g:deoplete#file#enable_buffer_path = 1
         let g:deoplete#max_list = 10000
         inoremap <expr><tab> pumvisible() ? "\<C-n>" :
                 \neosnippet#expandable_or_jumpable() ?
                 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
         inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+        inoremap <expr><CR> pumvisible() ? "\<C-y>" :"\<CR>"
         '''
 
 [[plugins]]
@@ -124,12 +141,6 @@ hook_add ='''
 
 
 [[plugins]]
-repo = 'Townk/vim-autoclose'
-
-[[plugins]]
-repo = 'tpope/vim-endwise'
-
-[[plugins]]
 repo = 'vim-scripts/Changed'
 
 
@@ -146,25 +157,22 @@ repo = 'tpope/vim-repeat'
 repo = 'tpope/vim-commentary'
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 hook_add = '''
-        let g:ale_lint_on_text_cahnged = 0
+        let g:ale_lint_on_text_cahnged = 'never'
+        let g:ale_lint_on_insert_leave = 0
 '''
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-on_ft = 'python'
+
 
 [[plugins]]
-repo = 'zchee/deoplete-clang'
-hook_source = '''
-        let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-10/lib/libclang-10.so.1'
-        let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
-'''
-on_ft = ['c', 'c++', 'cmake']
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+on_i = 1
+merged = '0'
 
 
 [[plugins]]

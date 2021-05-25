@@ -36,8 +36,7 @@ case ${OSTYPE} in
 		alias -g vimvim="vim"
 		alias -g python="python3"
 		alias -g py="python3"
-		alias -g rmrm="rm"
-		alias -g rm='mv -i -t ~/Trash'
+		# alias -g rm='mv -i -t ~/Trash'
     alias -g cdl="a=('ls -l') ; ls -l | cat -n ; read b ; cd ${a[$b-l]}"
     alias -g countfile='(shopt -s dotglob; for dir in */; do all=("$dir"/*); echo "$dir: ${#all[@]}"; done)'
     alias -g view="cmd.exe /c start NeeView.exe"

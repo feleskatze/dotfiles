@@ -58,6 +58,7 @@ set wildmenu
 set completeopt=menuone,noinsert
 
 
+
 "表示
 set number
 set cursorline
