@@ -133,9 +133,9 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add ='''
-        nnoremap <C-n> :NERDTreeToggle<CR>
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+        nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=30<CR>
 '''
 
 
@@ -172,7 +172,7 @@ repo = 'sheerun/vim-polyglot'
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 on_i = 1
-merged = '0'
+
 
 
 [[plugins]]
@@ -181,5 +181,12 @@ repo = 'jiangmiao/auto-pairs'
 [[plugins]]
 repo = 'machakann/vim-highlightedyank'
 
+
+[[plugins]]
+repo = "junegunn/vim-easy-align"
+hook_add = '''
+        xmap ga <Plug>(EasyAlign)
+        nmap ga <Plug>(EasyAlign)
+'''
 
 
