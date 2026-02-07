@@ -64,11 +64,24 @@ opts = {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = "Oil",
-    opts = { view_options = { show_hidden = true } },
+    opts = {
+      view_options = { show_hidden = true },
+      buf_options = {
+        buftype = "nofile",
+        bufhidden = "wipe",
+        swapfile = false,
+      },
+      -- qで閉じるのを明示
+      keymaps = {
+        ["q"] = "actions.close",
+      },
+    },
     keys = {
       { "-", "<cmd>Oil<cr>", desc = "Oil" },
     },
   },
+
+
 
   -- fzf-lua
   {
@@ -250,6 +263,38 @@ opts = {
     },
   },
 
+  -- キーバインド表示
+{
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {
+    triggers = {
+      { "<auto>", mode = "nixsotc" }, -- ほぼすべてのモードを対象に
+    },
+    disable = {
+      buftypes = {},  -- 特定バッファで無効化しない
+      filetypes = {}, -- 特定ファイルで無効化しない
+    },
+    plugins = {
+      marks = true,
+      registers = true,
+      spelling = { enabled = true, suggestions = 20 },
+    },
+    win = {
+      border = "rounded",
+      padding = { 1, 2 },
+    },
+    layout = {
+      spacing = 3,
+      align = "left",
+    },
+    icons = {
+      breadcrumb = "›",
+      separator = "➜",
+      group = "+",
+    },
+  },
+}
 
 
 }

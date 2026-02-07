@@ -12,6 +12,8 @@ vim.o.completeopt = "menu,menuone,noselect"
 
 -- Key map
 vim.keymap.set("i", "jj", "<ESC>", { silent = true})
+vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "No highlight" })
+
 
 -- lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

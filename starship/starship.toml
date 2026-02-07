@@ -1,5 +1,5 @@
 # starship.toml
-add_newline = false
+add_newline = true
 command_timeout = 1200
 
 format = """
