@@ -96,19 +96,22 @@ opts = {
     },
   },
 
-  -- ToggleTerm（必要なら）
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    keys = {
-      { "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Terminal" },
-    },
-    opts = {
+  -- ToggleTerm
+{
+  "akinsho/toggleterm.nvim",
+  version = "*",
+  keys = { { "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Terminal" } },
+  opts = function()
+    local bash = "C:/PROGRA~1/Git/usr/bin/bash.exe"
+    return {
+      shell = (vim.fn.executable(bash) == 1) and bash or vim.o.shell,
       open_mapping = [[<c-\>]],
       direction = "float",
       float_opts = { border = "rounded" },
-    },
-  },
+    }
+  end,
+},
+
 
   -- Mason（LSPバイナリ管理）
  {

@@ -15,6 +15,20 @@ vim.keymap.set("i", "jj", "<ESC>", { silent = true})
 vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "No highlight" })
 
 
+-- Windows: Neovim内蔵ターミナルの既定シェルを Git Bash にする
+if vim.fn.has("win32") == 1 then
+  local bash = "C:/PROGRA~1/Git/usr/bin/bash.exe"
+  if vim.fn.executable(bash) == 1 then
+    vim.opt.shell = bash
+    vim.opt.shellcmdflag = "-lc"
+    vim.opt.shellquote = ""
+    vim.opt.shellxquote = ""
+  else
+    vim.notify("Git Bash not found: " .. bash, vim.log.levels.WARN)
+  end
+end
+
+
 -- lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
