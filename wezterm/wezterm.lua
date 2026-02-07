@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 -- 見た目
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.font = wezterm.font_with_fallback({
-  "UDEV Gothic 35NF",
+  "UDEV Gothic 35NFLG",
 })
 config.font_size = 10.0
 config.line_height = 1
