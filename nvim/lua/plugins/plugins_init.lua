@@ -197,6 +197,17 @@ opts = {
           { name = "nvim_lsp" },
           { name = "buffer" },
         },
+        window = {
+          completion = cmp.config.window.bordered({
+            border = "rounded",
+            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+            scrollbar = false,
+          }),
+          documentation = cmp.config.window.bordered({
+            border = "rounded",
+            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,Search:None",
+          }),
+        },
         formatting = {
           format = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 }),
         },
@@ -219,4 +230,27 @@ opts = {
       },
     },
   },
+
+  -- Git差分表示
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      signs = {
+        add    = { text = "│" },
+        change = { text = "│" },
+        delete = { text = "─" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+      },
+      signcolumn = true,
+      numhl = false,
+      linehl = false,
+      current_line_blame = false, -- 必要なら true
+    },
+  },
+
+
+
 }
+

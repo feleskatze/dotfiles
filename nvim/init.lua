@@ -10,6 +10,9 @@ vim.o.updatetime = 200
 vim.o.signcolumn = "yes"
 vim.o.completeopt = "menu,menuone,noselect"
 
+-- Key map
+vim.keymap.set("i", "jj", "<ESC>", { silent = true})
+
 -- lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
