@@ -1,0 +1,30 @@
+# ~/.bashrc (interactive shell)
+
+# 早期return：非対話なら何もしない
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
+
+# 手動Go（例：C:\Go に入れた想定）
+export GOROOT="/c/Go"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+
+# 文字化け/幅ズレ回避（必要なら）
+export LANG="ja_JP.UTF-8"
+
+# starship（入ってる時だけ）
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init bash)"
+fi
+
+# 最小エイリアス（増やしすぎない）
+alias ll='ls -la'
+alias gs='git status -sb'
+alias gd='git diff'
+alias gl='git log --oneline --decorate -20'
+
+# よく使うGo
+alias got='go test ./...'
+alias gov='go version'

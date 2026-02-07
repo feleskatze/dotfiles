@@ -1,0 +1,6 @@
+# ~/.bash_profile (login shell)
+# Git Bash は起動の仕方で login shell になることがあるので、
+# ここは .bashrc を必ず読むだけにする
+if [ -f "$HOME/.bashrc" ]; then
+  . "$HOME/.bashrc"
+fi
