@@ -10,6 +10,8 @@ vim.o.updatetime = 200
 vim.o.signcolumn = "yes"
 vim.o.completeopt = "menu,menuone,noselect"
 
+vim.cmd.syntax("on")
+
 -- Key map
 vim.keymap.set("i", "jj", "<ESC>", { silent = true})
 vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "No highlight" })
@@ -27,6 +29,17 @@ if vim.fn.has("win32") == 1 then
     vim.notify("Git Bash not found: " .. bash, vim.log.levels.WARN)
   end
 end
+
+-- LspCollor
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.server_capabilities.semanticTokensProvider then
+      pcall(vim.lsp.semantic_tokens.start, args.buf, client.id)
+    end
+  end,
+})
+
 
 
 -- lazy.nvim bootstrap

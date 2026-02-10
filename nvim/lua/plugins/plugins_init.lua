@@ -23,42 +23,6 @@ return {
     },
   },
 
-  -- Treesitter
-{
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  event = { "BufReadPre", "BufNewFile" },
-opts = {
-  ensure_installed = { "go", "gomod", "gosum", "lua", "vim", "vimdoc" },
-  highlight = { enable = true },
-  indent = { enable = true },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
-    },
-  },
-  config = function(_, opts)
-    local ok, configs = pcall(require, "nvim-treesitter.configs")
-    if not ok then
-      vim.notify("nvim-treesitter not loaded (run :Lazy sync)", vim.log.levels.WARN)
-      return
-    end
-    configs.setup(opts)
-  end,
-},
-},
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    event = { "BufReadPre", "BufNewFile" },
-  },
-
   -- Oil（ファイル操作）
   {
     "stevearc/oil.nvim",
@@ -114,52 +78,58 @@ opts = {
 
 
   -- Mason（LSPバイナリ管理）
- {
+{
   "williamboman/mason.nvim",
   cmd = "Mason",
   opts = {},
-  config = function(_, opts)
-    require("mason").setup(opts)
+},
 
-    -- gopls (mason) をネイティブLSPで起動
-    local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
-    local gopls_cmd = mason_bin .. "/gopls"
+{
+  "williamboman/mason-lspconfig.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  dependencies = { "williamboman/mason.nvim" },
+  opts = {
+    ensure_installed = { "gopls" },
+    automatic_installation = true,
+  },
+},
+
+{
+  "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
+  dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+  },
+  config = function()
+    require("mason").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = { "gopls" },
+      automatic_installation = true,
+    })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    do
-      local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-      if ok then
-        capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-      end
+    local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+    if ok then
+      capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
     end
 
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "go",
-      callback = function(args)
-        if vim.fn.executable(gopls_cmd) ~= 1 then
-          vim.notify("gopls not found: " .. gopls_cmd .. " (install via :Mason)", vim.log.levels.WARN)
-          return
-        end
-
-        local clients = vim.lsp.get_clients({ bufnr = args.buf, name = "gopls" })
-        if #clients > 0 then return end
-
-        vim.lsp.start({
-          name = "gopls",
-          cmd = { gopls_cmd },
-          root_dir = vim.fs.root(args.buf, { "go.work", "go.mod", ".git" }),
-          capabilities = capabilities,
-          settings = {
-            gopls = {
-              staticcheck = true,
-              analyses = { unusedparams = true, shadow = true },
-            },
-          },
-        })
-      end,
+    -- ここが新方式
+    vim.lsp.config("gopls", {
+      capabilities = capabilities,
+      settings = {
+        gopls = {
+	  semanticTokens = true,
+          staticcheck = true,
+          analyses = { unusedparams = true, shadow = true },
+        },
+      },
     })
+
+    vim.lsp.enable("gopls")
   end,
 },
+
 
 
   -- Fidget（LSP進捗UI）

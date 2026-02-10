@@ -6,11 +6,6 @@ case $- in
   *) return ;;
 esac
 
-# 手動Go（例：C:\Go に入れた想定）
-export GOROOT="/c/Go"
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-
 # 文字化け/幅ズレ回避（必要なら）
 export LANG="ja_JP.UTF-8"
 
