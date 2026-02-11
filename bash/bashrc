@@ -6,7 +6,7 @@ case $- in
   *) return ;;
 esac
 
-# 文字化け/幅ズレ回避（必要なら）
+# 文字化け/幅ズレ回避
 export LANG="ja_JP.UTF-8"
 
 # starship（入ってる時だけ）
@@ -14,7 +14,11 @@ if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
 fi
 
-# 最小エイリアス（増やしすぎない）
+# git completion
+source "C:/Program Files/Git/mingw64/share/git/completion/git-completion.bash"
+
+
+# 最小エイリアス
 alias ll='ls -la'
 alias gs='git status -sb'
 alias gd='git diff'
