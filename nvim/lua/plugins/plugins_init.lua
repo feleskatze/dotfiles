@@ -231,7 +231,7 @@ return {
   -- Git差分表示
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     opts = {
       signs = {
         add    = { text = "│" },
@@ -283,7 +283,7 @@ return {
   -- indent/blankline chunk highlight
   {
     "shellRaining/hlchunk.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     opts = {
       chunk = { enable = true },
       indent = { enable = false },
