@@ -2,17 +2,54 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- 基本（必要最低限）
+-- 基本
 vim.o.number = true
 vim.o.relativenumber = false
+vim.o.cursorline = true
+vim.o.showmode = false
 vim.o.termguicolors = true
-vim.o.updatetime = 200
 vim.o.signcolumn = "yes"
-vim.o.completeopt = "menu,menuone,noselect"
-
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.o.showmatch = true
+vim.o.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", extends = "›", precedes = "‹", nbsp = "␣" }
+vim.o.autoread = true
+vim.o.showcmd = true
+vim.o.linebreak = true
 vim.cmd.syntax("on")
 
+
+-- 検索
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.incsearch = true
+vim.o.hlsearch = true
+vim.o.inccommand = "split" -- :s時にリアルタイムプレビュー表示が崩れるなら消す
+
+-- indent
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.smartindent = true
+vim.o.breakindent = true
+
+-- clopboard/chara
+vim.o.clipboard = "unnamedplus"
+vim.o.encoding = "utf-8"
+vim.o.fileencoding = "utf-8"
+
+-- comp
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.o.pumheight = 12
+vim.o.conceallevel = 0
+vim.o.updatetime = 200
+vim.o.timeoutlen = 400
+vim.o.wildmode = "longest:full,full"
+vim.o.wildignorecase = true
+
 -- Key map
+vim.o.mouse = "a"
 vim.keymap.set("i", "jj", "<ESC>", { silent = true})
 vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "No highlight" })
 
