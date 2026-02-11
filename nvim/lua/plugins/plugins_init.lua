@@ -130,7 +130,18 @@ return {
   end,
 },
 
-
+  -- signature help
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "LspAttach",
+    opts = {
+      bind = true,
+      floating_window = true,
+      hint_enable = false,
+      doc_lines = 0,
+      handler_opts = { border = "rounded" },
+    },
+  },
 
   -- Fidget（LSP進捗UI）
   {
@@ -267,7 +278,31 @@ return {
       group = "+",
     },
   },
-}
+},
+
+  -- indent/blankline chunk highlight
+  {
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      chunk = { enable = true },
+      indent = { enable = false },
+      line_num = { enable = true },
+      blank = { enable = false },
+    },
+    config = function()
+      require("hlchunk").setup({
+        chunk = {
+          enable = true,
+          use_treesitter = false,
+          delay = 100,
+        },
+        line_num ={
+          enable = true,
+        },
+      })
+    end
+  },
 
 
 }
