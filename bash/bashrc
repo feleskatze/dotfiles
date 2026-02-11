@@ -46,6 +46,7 @@ jj: チートシート
   jj split                変更を分割する（対話で選ぶ）
 
 bookmark
+  jj bookmark set NAME            @にNAMEを付ける/動かす
   jj bookmark set NAME -r @-     「ひとつ前(@-)」にNAMEを付ける/動かす
   jj bookmark track master@origin  master を origin の追跡対象にする
 
