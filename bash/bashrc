@@ -24,6 +24,47 @@ alias gs='git status -sb'
 alias gd='git diff'
 alias gl='git log --oneline --decorate -20'
 
-# よく使うGo
-alias got='go test ./...'
-alias gov='go version'
+
+
+
+
+# command
+
+# --- jj cheat sheet -------------------------------------------------
+function jjh() {
+  cat << 'EOF'
+jj: チートシート
+
+初期化
+  jj git init
+
+作業（チェンジ）
+  jj new                  新しいチェンジを作ってそれを編集する
+  jj desc -m "msg"        説明（コミットメッセージ相当）を書く
+  jj commit -m "msg"      jj descした後にjj newをする
+  jj edit @-              ひとつ前のチェンジを編集対象にする
+  jj split                変更を分割する（対話で選ぶ）
+
+bookmark
+  jj bookmark set NAME -r @-     「ひとつ前(@-)」にNAMEを付ける/動かす
+  jj bookmark track master@origin  master を origin の追跡対象にする
+
+push
+  jj git push             追跡しているbookmarkをGitへ送る
+  jj git push -b master   gitが空の状態で初めてpushするとき/git側にブランチを作る
+
+状態確認
+  jj status               @の状態確認
+  jj log                  ログ確認
+  jj diff                 直前との差分確認
+  jj show                 @の状態と差分の確認
+  jj bookmark list        bookmarkの一覧表示
+
+[memo]revsetメモ
+  @   作業コピー（いま編集してるチェンジ）
+  @-  ひとつ前
+  @-- ふたつ前
+  @+  ひとつ後
+  @++ ふたつ後
+EOF
+}
