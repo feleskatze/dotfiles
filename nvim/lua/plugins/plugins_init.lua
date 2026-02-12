@@ -102,12 +102,6 @@ return {
     "williamboman/mason-lspconfig.nvim",
   },
   config = function()
-    require("mason").setup()
-    require("mason-lspconfig").setup({
-      ensure_installed = { "gopls" },
-      automatic_installation = true,
-    })
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     if ok then
@@ -305,25 +299,17 @@ return {
     "shellRaining/hlchunk.nvim",
     event = "VeryLazy",
     opts = {
-      chunk = { enable = true },
+      chunk = {
+        enable = true,
+        use_treesitter = false,
+        delay = 100,
+      },
       indent = { enable = false },
-      line_num = { enable = true },
+      line_num ={
+        enable = true,
+      },
       blank = { enable = false },
     },
-    config = function()
-      require("hlchunk").setup({
-        chunk = {
-          enable = true,
-          use_treesitter = false,
-          delay = 100,
-        },
-        line_num ={
-          enable = true,
-        },
-      })
-    end
   },
-
-
 }
 
