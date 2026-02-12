@@ -119,8 +119,9 @@ return {
       capabilities = capabilities,
       settings = {
         gopls = {
-	  semanticTokens = true,
+          semanticTokens = true,
           staticcheck = true,
+          gofumpt = true,
           analyses = { unusedparams = true, shadow = true },
         },
       },

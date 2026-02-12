@@ -67,17 +67,22 @@ if vim.fn.has("win32") == 1 then
   end
 end
 
--- LspCollor
+-- When Save File run formatter
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and client.server_capabilities.semanticTokensProvider then
-      pcall(vim.lsp.semantic_tokens.start, args.buf, client.id)
+
+    -- run gopls formatter
+    if client and client.name == "gopls" then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ async = false })
+        end,
+      })
     end
   end,
 })
-
-
 
 -- lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
