@@ -22,6 +22,8 @@ link() {
 mkdir -p "$HOME/AppData/Local"
 link "$ROOT/nvim" "$HOME/AppData/Local/nvim"
 
+link "$ROOT/linter/golangci.yml" "$HOME/.golangci.yml"
+
 # WezTerm
 link "$ROOT/wezterm/wezterm.lua" "$HOME/.wezterm.lua"
 

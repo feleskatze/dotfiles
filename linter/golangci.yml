@@ -1,0 +1,18 @@
+version: "2"
+
+run:
+  timeout: 2m
+  concurrency: 2
+
+linters:
+  default: none
+  enable:
+    - govet
+    - gocyclo
+    - funlen
+  settings:
+    gocyclo:
+      min-complexity: 18
+    funlen:
+      lines: 180
+      statements: 90

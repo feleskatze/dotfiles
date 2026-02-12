@@ -228,6 +228,25 @@ return {
     },
   },
 
+
+  {
+  "mfussenegger/nvim-lint",
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    local lint = require("lint")
+
+    lint.linters_by_ft = {
+      go = { "golangcilint" },
+    }
+
+    -- 手動実行
+    vim.api.nvim_create_user_command("GoLint", function()
+      lint.try_lint()
+    end, {})
+  end,
+ },
+
+
   -- Git差分表示
   {
     "lewis6991/gitsigns.nvim",
