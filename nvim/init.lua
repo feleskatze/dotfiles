@@ -52,6 +52,7 @@ vim.o.wildignorecase = true
 vim.o.mouse = "a"
 vim.keymap.set("i", "jj", "<ESC>", { silent = true})
 vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "No highlight" })
+vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float)
 
 
 -- Windows: Neovim内蔵ターミナルの既定シェルを Git Bash にする
@@ -83,6 +84,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 })
+
+-- Auto Display LSP Hint
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, {
+      focus = false,
+      scope = "cursor",
+    })
+  end,
+})
+
+-- Set LSP Hint Window Looks
+vim.diagnostic.config({
+  float = {
+    border = "rounded",
+    source = "if_many",
+    header = "",
+    focusable = false,
+    winblend = 10,
+  },
+})
+
+
 
 -- lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
