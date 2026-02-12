@@ -68,23 +68,6 @@ if vim.fn.has("win32") == 1 then
   end
 end
 
--- When Save File run formatter
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-    -- run gopls formatter
-    if client and client.name == "gopls" then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = args.buf,
-        callback = function()
-          vim.lsp.buf.format({ async = false })
-        end,
-      })
-    end
-  end,
-})
-
 -- Auto Display LSP Hint
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function()
