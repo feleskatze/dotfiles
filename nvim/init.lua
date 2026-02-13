@@ -89,6 +89,9 @@ vim.diagnostic.config({
   },
 })
 
+vim.o.winborder = "rounded"
+vim.o.winblend = 10
+
 
 
 -- lazy.nvim bootstrap
