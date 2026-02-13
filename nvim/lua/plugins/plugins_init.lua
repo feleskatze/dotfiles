@@ -147,13 +147,7 @@ return {
         vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({async=true})<cr>", vim.tbl_extend("force", opts, { desc = "LSP: format" }))
 
         vim.keymap.set("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<cr>", vim.tbl_extend("force", opts, { desc = "LSP: diagnostics float" }))
-
-        -- which-key のカテゴリ名
-        local ok_wk, wk = pcall(require, "which-key")
-        if ok_wk then
-          wk.register({ l = { name = "lsp" } }, { prefix = "<leader>", buffer = ev.buf })
-        end
-      end,
+     end,
     })
 
 
@@ -339,6 +333,13 @@ return {
       breadcrumb = "›",
       separator = "➜",
       group = "+",
+    },
+    spec = {
+      { "<leader>w", buffer = 1, group = "window"},
+      { "<leader>b", buffer = 1, group = "buffer"},
+      { "<leader>l", buffer = 1, group = "lsp"},
+      { "<leader>s", buffer = 1, group = "symbols"},
+      { "<leader>f", buffer = 1, group = "fzf"},
     },
   },
 },
