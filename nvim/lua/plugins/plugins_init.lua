@@ -84,6 +84,21 @@ return {
   end,
 },
 
+-- Treesitter
+{
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    ensure_installed = { "go", "lua", "vim", "vimdoc", "query" },
+    highlight = { enable = true },
+    indent = { enable = true },  
+  },
+  config = function(_, opts)
+    require("nvim-treesitter.config").setup(opts)
+  end,
+},
+
 
   -- Mason（LSPバイナリ管理）
 {
@@ -335,7 +350,7 @@ return {
     opts = {
       chunk = {
         enable = true,
-        use_treesitter = false,
+        use_treesitter = true,
         delay = 100,
       },
       indent = { enable = false },
