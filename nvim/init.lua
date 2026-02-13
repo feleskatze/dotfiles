@@ -54,6 +54,18 @@ vim.keymap.set("i", "jj", "<ESC>", { silent = true})
 vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "No highlight" })
 vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float)
 
+-- Window
+vim.keymap.set("n", "<leader>ws", "<cmd>split<cr>", { desc = "Window: split" })
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>", { desc = "Window: vsplit" })
+vim.keymap.set("n", "<leader>wd", "<cmd>close<cr>", { desc = "Window: close" })
+
+-- Buffer
+vim.keymap.set("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Buffer: next" })
+vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Buffer: prev" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Buffer: delete" })
+
+
+
 
 -- Windows: Neovim内蔵ターミナルの既定シェルを Git Bash にする
 if vim.fn.has("win32") == 1 then

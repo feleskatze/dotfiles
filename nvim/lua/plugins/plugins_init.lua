@@ -54,9 +54,17 @@ return {
     cmd = "FzfLua",
     opts = {},
     keys = {
-      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
-      { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+     -- files
+      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "File: files" },
+      { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "File: live grep" },
+      { "<leader>fG", "<cmd>FzfLua grep_cword<cr>", desc = "File: grep word" },
+      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "File: buffers" },
+      { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "File: recent" },
+
+      -- symbols
+      { "<leader>ss", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Symbols: document" },
+      { "<leader>sS", "<cmd>FzfLua lsp_workspace_symbols<cr>", desc = "Symbols: workspace" },
+      { "<leader>st", "<cmd>FzfLua treesitter<cr>", desc = "Symbols: treesitter" },
     },
   },
 
@@ -107,6 +115,32 @@ return {
     if ok then
       capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
     end
+
+  -- LspAttach: LSPが付いたバッファにだけキーマップを貼る
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(ev)
+        local opts = { buffer = ev.buf, silent = true, noremap = true }
+
+        -- keumap
+        vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<cr>", vim.tbl_extend("force", opts, { desc = "LSP: definition" }))
+        vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.references()<cr>", vim.tbl_extend("force", opts, { desc = "LSP: references" }))
+        vim.keymap.set("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<cr>", vim.tbl_extend("force", opts, { desc = "LSP: implementation" }))
+        vim.keymap.set("n", "<leader>lt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", vim.tbl_extend("force", opts, { desc = "LSP: type definition" }))
+
+        vim.keymap.set("n", "<leader>ln", "<cmd>lua vim.lsp.buf.rename()<cr>", vim.tbl_extend("force", opts, { desc = "LSP: rename" }))
+        vim.keymap.set({ "n", "v" }, "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", vim.tbl_extend("force", opts, { desc = "LSP: code action" }))
+        vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({async=true})<cr>", vim.tbl_extend("force", opts, { desc = "LSP: format" }))
+
+        vim.keymap.set("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<cr>", vim.tbl_extend("force", opts, { desc = "LSP: diagnostics float" }))
+
+        -- which-key のカテゴリ名
+        local ok_wk, wk = pcall(require, "which-key")
+        if ok_wk then
+          wk.register({ l = { name = "lsp" } }, { prefix = "<leader>", buffer = ev.buf })
+        end
+      end,
+    })
+
 
     -- ここが新方式
     vim.lsp.config("gopls", {
