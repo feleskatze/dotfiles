@@ -64,6 +64,10 @@ vim.keymap.set("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Buffer: next" })
 vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Buffer: prev" })
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Buffer: delete" })
 
+--VScode like Alt+↕
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 
 
 
