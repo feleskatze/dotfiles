@@ -2,13 +2,39 @@
 return {
   -- Theme
   {
+    "sainnhe/gruvbox-material",
+    priority = 1000,
+    config = function()
+      vim.o.background = "dark"
+      vim.g.gruvbox_material_background = "hard"
+      -- パレット（material / mix / original）
+      vim.g.gruvbox_material_foreground = "original"
+      -- サイドバーやポップアップを少し暗く
+      vim.g.gruvbox_material_dim_inactive_windows = 0
+      vim.g.gruvbox_material_better_performance = 1
+
+      vim.cmd.colorscheme("gruvbox-material")
+    end,
+  },
+   {
     "luisiacc/gruvbox-baby",
     priority = 1000,
     config = function()
       vim.o.background = "dark"
-      vim.cmd.colorscheme("gruvbox-baby")
     end,
   },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("catppuccin").setup({
+        flavour = "mocha",
+        auto_integrations = true,
+      })
+    end,
+    },
 
   -- Icons（fzf-lua / lualine などで使う）
   { "nvim-tree/nvim-web-devicons", lazy = true },

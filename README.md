@@ -78,9 +78,19 @@ Oni supozas Nerd Font-kongruajn glifojn.
   - Oficiala dokumentaro: https://lazy.folke.io/  
 
 ### Kolorskemo
+- **gruvbox-material**
+  - Oficiala retejo: https://github.com/sainnhe/gruvbox-material
+  - Ĉefa kolorskemo
 
 - **gruvbox-baby**
   - Oficiala retejo: https://github.com/luisiacc/gruvbox-baby  
+  - Se vi deziras fari ŝanĝojn, `:colorscheme gruvbox-baby`
+
+- **catppuccin**
+  - Oficiala retejo: https://github.com/catppuccin/nvim
+  - Helkolora temo: catppuccin-Latte
+  - Malhelaj temoj: catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+  - Se vi volas ŝanĝi la temon, uzu `:colorscheme catppuccin-frappe`
 
 ### UI / Montrado
 
