@@ -139,13 +139,9 @@ Oni supozas Nerd Font-kongruajn glifojn.
 
 ### Aŭtomata kompletigo
 
-- **nvim-cmp**
-  - Oficiala retejo: https://github.com/hrsh7th/nvim-cmp  
-  - Dependaj aldonaĵoj:
-    - cmp-nvim-lsp  
-    - cmp-buffer  
-    - LuaSnip  
-    - lspkind.nvim  
+- **blink.cmp**
+  - Oficiala retejo: https://github.com/saghen/blink.cmp
+  - Oficiala dokumentaro: https://cmp.saghen.dev/
 
 ### Formatado
 

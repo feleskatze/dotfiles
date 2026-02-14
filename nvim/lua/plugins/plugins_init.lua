@@ -121,15 +121,13 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    "saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
   },
   config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    if ok then
-      capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-    end
+    capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
   -- LspAttach: LSPが付いたバッファにだけキーマップを貼る
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -188,67 +186,41 @@ return {
     opts = {},
   },
 
-  -- completion stack
-  { "onsails/lspkind.nvim", lazy = true },
-  { "L3MON4D3/LuaSnip", event = "InsertEnter" },
+  -- Completion
   {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "L3MON4D3/LuaSnip",
-      "onsails/lspkind.nvim",
-    },
-    config = function()
-      local cmp = require("cmp")
-      local lspkind = require("lspkind")
+  "saghen/blink.cmp",
+  version = "*",
+  event = { "InsertEnter", "CmdLineEnter" },
 
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-        }),
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "buffer" },
-        },
-        window = {
-          completion = cmp.config.window.bordered({
-            border = "rounded",
-            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-            scrollbar = false,
-          }),
-          documentation = cmp.config.window.bordered({
-            border = "rounded",
-            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,Search:None",
-          }),
-        },
-        formatting = {
-          format = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 }),
-        },
-      })
-    end,
+  ---@module "blink.cmp"
+  ---@type blink.cmp.Config
+  opts = {
+    -- Keymap
+    keymap = {
+      preset = "enter",
+      ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
+    },
+
+    sources = {
+      default = { "lsp", "buffer", "path", "snippets" },
+    },
+
+    completion = {
+      menu = { border = "rounded" },
+      documentation = { window = { border = "rounded" }, auto_show = true, auto_show_delay_ms = 300 },
+    },
+
+    -- lsp_signature.nvimを使う
+    signature = { enabled = false },
   },
+
+  -- sources.default をoptsで拡張するためのおまじない（lazy.nvim向け）
+  opts_extend = { "sources.default" },
+},
+
+
 
   -- conform（保存時フォーマット）
   {
