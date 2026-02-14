@@ -148,6 +148,11 @@ Oni supozas Nerd Font-kongruajn glifojn.
 - **conform.nvim**
   - Oficiala retejo: https://github.com/stevearc/conform.nvim  
 
+### Eniga helpo
+
+- **nvim-autopairs**
+  - Oficiala retejo: https://github.com/windwp/nvim-autopairs
+
 ### Lint
 
 - **nvim-lint**
