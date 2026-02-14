@@ -256,6 +256,18 @@ return {
   end,
  },
 
+  -- autopairs
+{
+  "windwp/nvim-autopairs",
+  event = "InsertEnter",
+  config = function()
+    require("nvim-autopairs").setup({
+      check_ts = true, -- treesitterがあれば文脈判定
+    })
+  end,
+},
+
+
 
   -- Git差分表示
   {
