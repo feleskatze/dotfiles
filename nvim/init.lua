@@ -13,7 +13,14 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.showmatch = true
 vim.o.list = true
-vim.opt.listchars = { trail = "·", extends = "›", precedes = "‹", nbsp = "␣" }
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "▸ ",
+  trail = "·",
+  extends = "›",
+  precedes = "‹",
+  nbsp = "␣",
+}
 vim.o.autoread = true
 vim.o.showcmd = true
 vim.o.linebreak = true
