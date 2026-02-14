@@ -24,7 +24,7 @@ vim.opt.listchars = {
 vim.o.autoread = true
 vim.o.showcmd = true
 vim.o.linebreak = true
-vim.cmd.syntax("on")
+--vim.cmd.syntax("on")
 
 
 -- 検索

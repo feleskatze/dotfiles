@@ -87,15 +87,25 @@ return {
 -- Treesitter
 {
   "nvim-treesitter/nvim-treesitter",
+  lazy = false,
   build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
   opts = {
     ensure_installed = { "go", "lua", "vim", "vimdoc", "query" },
     highlight = { enable = true },
-    indent = { enable = true },  
+    indent = { enable = false },  
   },
   config = function(_, opts)
     require("nvim-treesitter.config").setup(opts)
+    -- treesitter を自動 start させる
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(args)
+        -- すでに attach してたら何もしない
+        if vim.treesitter.highlighter.active[args.buf] ~= nil then
+          return
+        end
+        pcall(vim.treesitter.start, args.buf)
+      end,
+    })
   end,
 },
 
@@ -337,7 +347,8 @@ return {
   -- indent/blankline chunk highlight
   {
     "shellRaining/hlchunk.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       chunk = {
         enable = true,
