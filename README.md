@@ -80,11 +80,12 @@ Oni supozas Nerd Font-kongruajn glifojn.
 ### Kolorskemo
 - **gruvbox-material**
   - Oficiala retejo: https://github.com/sainnhe/gruvbox-material
-  - Ĉefa kolorskemo
-
+  - Se vi deziras fari ŝanĝojn, `:colorscheme gruvbox-material`
+ 
 - **gruvbox-baby**
   - Oficiala retejo: https://github.com/luisiacc/gruvbox-baby  
   - Se vi deziras fari ŝanĝojn, `:colorscheme gruvbox-baby`
+  - Ĉefa kolorskemo
 
 - **catppuccin**
   - Oficiala retejo: https://github.com/catppuccin/nvim

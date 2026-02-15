@@ -13,14 +13,15 @@ return {
       vim.g.gruvbox_material_dim_inactive_windows = 0
       vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
    {
     "luisiacc/gruvbox-baby",
     priority = 1000,
     config = function()
-      vim.o.background = "dark"
+      vim.g.gruvbox_baby_background_color = "dark"
+      vim.cmd.colorscheme("gruvbox-baby")
     end,
   },
   {
